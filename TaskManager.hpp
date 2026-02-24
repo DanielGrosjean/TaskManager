@@ -53,8 +53,8 @@ class TaskManager {
 
         // Task-Specific Functions
         void addTask();
-        void removeTask(int id);
-        void getTask() const;
+        void removeTask(int taskId);
+        Task getTask(int taskId) const;
         void UpdateTask();
         void listTasks();
         void listTasksByStatus();
@@ -63,16 +63,16 @@ class TaskManager {
         void changeTaskStatus();
         void assignTask();
         void setPriority();
-        void getPriority();
+        Priority getPriority(int taskId) const;
 
         // Team-Member Functions
         void createTeamMember();
         void removeTeamMember();
-        void getTeamMember();
+        TeamMember getTeamMember(int memberId) const;
         void setRole();
 
         // Utility Functions
-        void searchTasks();
+        void searchTasks(std::string keyword);
 };
 
 #endif
