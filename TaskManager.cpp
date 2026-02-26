@@ -1,10 +1,12 @@
 #include "TaskManager.hpp"
 #include <iostream>
+#include <optional>
+#include <vector>
 
 // Task-Specific Functions
 
-void addTask() {
-    
+void TaskManager::addTask(const std::string title, const std::string description, Priority priority, std::optional<TeamMember> assignee) {
+    tasks.emplace_back(nextId++, title, description, priority, std::move(assignee));
 }
 
 void TaskManager::removeTask(int taskId) {}

@@ -37,17 +37,29 @@ struct Task {
     std::string title;
     std::string description;
     Status status = Todo;
-    Priority priorityLevel;
-    TeamMember assignee;
+    Priority priority = Medium;
+    std::optional<TeamMember> assignee;
+
+    // Constructor
+    Task (
+        int id_, 
+        std::string title_, 
+        std::string description_, 
+        Priority priority_,
+        std::optional<TeamMember> assignee_ = std::nullopt) :
+        id(id_),
+        title(std::move(title_)),
+        description(std::move(description_)),
+        status(Todo),
+        priority(priority_),
+        assignee(std::move(assignee_))
+        {}
 };
 
 // CLASSES
 
 class TaskManager {
     public:
-        TaskManager() {
-            
-        }
 
     private:
         // Variables & Data Structures
@@ -55,7 +67,7 @@ class TaskManager {
         std::vector<Task> tasks;
 
         // Task-Specific Functions
-        void addTask(std::string title, std::string description, Priority priorityLevel, std::optional<int> memberId);
+        void addTask(const std::string title, const std::string description, Priority priority, std::optional<TeamMember> assignee);
         void removeTask(int taskId);
         Task getTask(int taskId) const;
         void UpdateTask();
