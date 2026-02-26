@@ -45,6 +45,9 @@ struct Task {
 
 class TaskManager {
     public:
+        TaskManager() {
+            
+        }
 
     private:
         // Variables & Data Structures
@@ -52,7 +55,7 @@ class TaskManager {
         std::vector<Task> tasks;
 
         // Task-Specific Functions
-        void addTask();
+        void addTask(std::string title, std::string description, Priority priorityLevel, std::optional<int> memberId);
         void removeTask(int taskId);
         Task getTask(int taskId) const;
         void UpdateTask();
